@@ -1,2 +1,28 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+.purple-light {
+  background-color: $purple-100;
+}
+
+.purple {
+  background-color: $purple-400;
+}
+
+.purple-dark {
+  background-color: $purple-700;
+}
+
+.purple-border {
+  border-color: $purple-400 !important;
+  box-shadow: 0 0 5px rgba(140, 104, 205, 1) !important;
+}
+
+.red-light {
+  background-color: $red-200;
+}
+
+.red-border {
+  border-color: $red-500 !important;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 1) !important;
+}
