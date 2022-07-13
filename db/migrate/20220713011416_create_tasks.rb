@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[7.0]
     create_table :tasks do |t|
       t.references :creator, null: false, foreign_key: { to_table: :users }
       t.string :title, null: false, index: true
-      t.integer :approves_count, null: false, default: 0
+      t.integer :approvals_count, null: false, default: 0
       t.enum :status, enum_type: "status", default: "new", null: false
 
       t.datetime :deadline_at
