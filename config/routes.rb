@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/users', to: 'devise/registrations#new'
   end
 
-  resources :tasks, only: %i[index]
+  resources :tasks, only: %i[index new create]
 
   root to: 'tasks#index'
 end

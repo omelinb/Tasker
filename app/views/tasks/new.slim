@@ -1,1 +1,12 @@
-h1 new
+div class="h-75 d-flex flex-column justify-content-center align-items-center"
+  h3 Create task
+
+  = form_with(model: @task, html: { class: "p-3 rounded-3" }) do |f|
+    div class="mb-3"
+      = f.text_field :title, class: "form-control border-secondary", placeholder: "Title"
+
+    div class="mb-3"
+      = f.datetime_field :deadline_at, class: "form-control border-secondary"
+
+    div class="text-center"
+      = f.submit "New task", class: "btn btn-success green-border text-white px-3 py-1 mt-1"
