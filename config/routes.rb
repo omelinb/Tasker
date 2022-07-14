@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     get '/users', to: 'devise/registrations#new'
   end
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :tasks, only: %i[index]
+    end
+  end
+
   resources :tasks, only: %i[index new create]
 
   root to: 'tasks#index'
