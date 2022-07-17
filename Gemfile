@@ -20,3 +20,5 @@ gem "slim", "~> 4.1"
 group :development, :test do
   gem "pry-byebug", "~> 3.9"
 end
+
+gem "aasm", "~> 5.2"
