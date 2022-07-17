@@ -1,16 +1,5 @@
-div class=["card my-1 #{'green-border' if task.creator_id == current_user&.id}"]
-  div class="card-body"
-    h6 class="card-title ms-1" = task.title
-    div class="d-flex align-items-center"
-      - if user_signed_in?
-        - if status == 'new'
-          - if current_user.id == task.creator_id
-            = link_to 'Start', '#', class: 'btn btn-sm btn-primary py-0', data: { "turbo-method": :patch }
-        - elsif status == 'in_progress'
-          - if current_user.id == task.creator_id
-            = link_to 'Complete', '#', class: 'btn btn-sm btn-success py-0 me-1', data: { "turbo-method": :patch }
-            = link_to 'Cancel', '#', class: 'btn btn-sm btn-danger py-0 me-1', data: { "turbo-method": :patch }
-          - else
-            = link_to 'Approve', '#', class: 'btn btn-sm btn-primary py-0', data: { "turbo-method": :post }
-      div class="ms-auto"
-        span title="Approves" class="badge text-light rounded-pill bg-dark" = task.approvals_count
+= tag.div(id: "task_#{task.id}", data: { controller: 'approvals' , 'approvals-target': 'task' }, class: "card my-1 #{'purple-border' if task.creator_id == current_user&.id}")
+  .card-body
+    h6 class="card-title ms-1"
+      = link_to task.title, task_path(task), class: 'text-decoration-none link-dark'
+    = render 'buttons', task: task

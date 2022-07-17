@@ -1,0 +1,17 @@
+.d-flex.align-items-center
+  - if user_signed_in?
+    - if task.new?
+      - if current_user.id == task.creator_id
+        = button_tag 'Start', class: 'btn btn-sm btn-success py-0'
+    - elsif task.in_progress?
+      - if current_user.id == task.creator_id
+        = button_tag 'Complete', class: 'btn btn-sm btn-success py-0 me-1'
+        = button_tag 'Cancel', class: 'btn btn-sm btn-danger py-0 me-1'
+      .ms-auto
+        span [
+              style="cursor: pointer;"
+              title="Approvals"
+              class="badge text-warning rounded-pill bg-dark"
+              data-action="click->approvals#plus"
+              data-approvals-target="approval"
+             ] = "+#{task.approvals_count}"

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tasks, only: %i[index new create]
+  resources :tasks, only: %i[index new create] do
+    resources :approvals, only: %i[create]
+  end
 
   root to: 'tasks#index'
 end

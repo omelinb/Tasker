@@ -3,4 +3,5 @@ class User < ApplicationRecord
          :recoverable, :validatable
 
   has_many :created_tasks, class_name: 'Task', foreign_key: 'creator_id', dependent: :destroy
+  has_many :approvals, dependent: :destroy
 end
