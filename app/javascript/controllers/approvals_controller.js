@@ -4,7 +4,7 @@ import { post } from "@rails/request.js"
 export default class extends Controller {
   static targets = [ 'approval', 'task' ]
 
-  async plus() {
+  async addApproval() {
     const taskId = this.taskTarget.id.split('_')[1]
     const response = await post(`/tasks/${taskId}/approvals`)
 
