@@ -1,12 +1,12 @@
-div class="h-75 d-flex flex-column justify-content-center align-items-center"
+.h-75.d-flex.flex-column.justify-content-center.align-items-center
   h3 Log In
 
   = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "purple-light p-3 rounded-3" }, data: { turbo: false }) do |f|
-    div class="mb-3"
+    .mb-3
       = f.email_field :email, class: "form-control purple-border", placeholder: "Email", autofocus: true, autocomplete: "email"
 
-    div class="mb-3"
+    .mb-3
       = f.password_field :password, class: "form-control purple-border", placeholder: "Password", autocomplete: "current-password"
 
-    div class="text-center"
+    .text-center
       = f.submit "Log In", class: "btn purple text-white px-3 py-1 mt-1 purple-border"
