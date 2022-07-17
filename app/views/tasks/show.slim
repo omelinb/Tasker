@@ -1,0 +1,51 @@
+.h-75.d-flex.flex-column.justify-content-center.align-items-center
+  h3 Task info
+
+  .p-3.rounded-3.align-center-left
+    .mb-3
+      p
+        strong
+          | Title: 
+        = @task.title
+
+    .mb-3
+      p
+        strong
+          | Status: 
+        = @task.status
+
+    .mb-3
+      p
+        strong
+          | Creator: 
+        = @task.creator.email
+
+    .mb-3
+      p
+        strong
+          | Approvals count: 
+        = @task.approvals_count
+
+    .mb-3
+      p
+        strong
+          | Deadline at: 
+        = @task.deadline_at || 'empty'
+
+    .mb-3
+      p
+        strong
+          | Completed at: 
+        = @task.completed_at || 'empty'
+
+    .mb-3
+      p
+        strong
+          | Canceled at: 
+        = @task.canceled_at || 'empty'
+
+    .mb-3
+      p
+        strong
+          | Created at: 
+        = @task.created_at
