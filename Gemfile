@@ -22,3 +22,7 @@ group :development, :test do
 end
 
 gem "aasm", "~> 5.2"
+
+gem "pagy", "~> 5.10"
+
+gem "jsonapi-serializer", "~> 2.2"

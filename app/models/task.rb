@@ -2,15 +2,15 @@ class Task < ApplicationRecord
   include AASM
 
   STATUSES = %w[new in_progress completed canceled].freeze
-  FIELDS_FOR_BOARD = %i[id title status approvals_count creator_id].freeze
+  DASHBOARD_FIELDS = %i[id title status approvals_count creator_id].freeze
 
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id', required: true
   has_many :approvals, dependent: :destroy
 
   validates :title, presence: true
 
-  scope :board_fields, -> { select(FIELDS_FOR_BOARD) }
-  scope :ordered, -> { order(updaed_at: :desc) }
+  scope :dashboard_fields, -> { select(DASHBOARD_FIELDS) }
+  scope :ordered, -> { order(:updated_at) }
   scope :statused, -> (status) { where(status: status) }
 
   aasm whiny_transitions: false, column: :status do
