@@ -2,7 +2,8 @@
 Tasker Project
 -----------
 
-Simple application for tasks management including tasks assigning(soon) and different tasks statuses.
+Simple application for tasks management including tasks assigning(soon) and different tasks statuses.  
+Project available on https://tasker-tm-application.herokuapp.com/
 
 System Dependencies
 -------------------
