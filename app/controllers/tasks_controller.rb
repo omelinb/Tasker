@@ -50,6 +50,8 @@ class TasksController < ApplicationController
   end
 
   def is_creator?
-    current_user == @task&.creator
+    return if current_user == @task&.creator
+
+    head :forbidden
   end
 end
