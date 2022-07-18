@@ -1,24 +1,30 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tasker Project
+-----------
 
-Things you may want to cover:
+Simple application for tasks management including tasks assigning(soon) and different tasks statuses.
 
-* Ruby version
+System Dependencies
+-------------------
 
-* System dependencies
+Project was created using:
 
-* Configuration
+- Ruby 3.0.0
+- Rails 7.0.3
+- PostgreSQL
+- Node 14.19.3
 
-* Database creation
+Project Install
+-------------------
+```shell
+git clone git@github.com:omelinb/Tasker.git
+bundle install
+bundle exec rails db:create
+bundle exec rails db:migrate
+```
 
-* Database initialization
+API
+---
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- /api/v1/tasks/:status
+  :status param can be one of the next values: new, in_progress, completed, canceled
