@@ -9,7 +9,7 @@ export default class extends Controller {
     const response = await post(`/tasks/${taskId}/approvals`)
 
     if (response.ok) {
-      let approvalsCount = parseInt(this.approvalTarget.innerText) + 1
+      const approvalsCount = parseInt(this.approvalTarget.innerText) + 1
       this.approvalTarget.innerText = `+${approvalsCount}`
     }
   }

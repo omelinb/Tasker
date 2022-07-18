@@ -30,9 +30,7 @@ export default class extends Controller {
     this.taskTarget.remove()
 
     const tasksColumnId = `tasks_${expectedStatus}`
-    const taskElement = document
-                          .createRange()
-                          .createContextualFragment(html)
+    const taskElement = document.createRange().createContextualFragment(html)
     document.getElementById(tasksColumnId).after(taskElement)
   }
 }
