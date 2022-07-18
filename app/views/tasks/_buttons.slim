@@ -2,11 +2,11 @@
   - if user_signed_in?
     - if task.new?
       - if current_user.id == task.creator_id
-        = button_tag 'Start', class: 'btn btn-sm btn-success py-0'
+        = button_tag 'Start', class: 'btn btn-sm btn-success py-0', data: { 'action': 'click->tasks#startTask' }
     - elsif task.in_progress?
       - if current_user.id == task.creator_id
-        = button_tag 'Complete', class: 'btn btn-sm btn-success py-0 me-1'
-        = button_tag 'Cancel', class: 'btn btn-sm btn-danger py-0 me-1'
+        = button_tag 'Complete', class: 'btn btn-sm btn-success py-0 me-1', data: { 'action': 'click->tasks#completeTask' }
+        = button_tag 'Cancel', class: 'btn btn-sm btn-danger py-0 me-1', data: { 'action': 'click->tasks#cancelTask' }
       .ms-auto
         span [
               style="cursor: pointer;"

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   end
 
   resources :tasks, only: %i[index show new create] do
+    patch 'change_status/:event', on: :member, to: 'tasks#change_status'
+
     resources :approvals, only: %i[create]
   end
 

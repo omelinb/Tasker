@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import TasksController from "./tasks_controller"
+application.register("tasks", TasksController)
+
 import ApprovalsController from "./approvals_controller"
 application.register("approvals", ApprovalsController)

@@ -10,7 +10,7 @@ class Task < ApplicationRecord
   validates :title, presence: true
 
   scope :dashboard_fields, -> { select(DASHBOARD_FIELDS) }
-  scope :ordered, -> { order(:updated_at) }
+  scope :ordered, -> { order(updated_at: :desc) }
   scope :statused, -> (status) { where(status: status) }
 
   aasm whiny_transitions: false, column: :status do
