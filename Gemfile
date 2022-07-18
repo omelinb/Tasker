@@ -16,13 +16,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "devise", "~> 4.8"
 gem "slim", "~> 4.1"
+gem "aasm", "~> 5.2"
+gem "pagy", "~> 5.10"
+gem "jsonapi-serializer", "~> 2.2"
 
 group :development, :test do
   gem "pry-byebug", "~> 3.9"
 end
-
-gem "aasm", "~> 5.2"
-
-gem "pagy", "~> 5.10"
-
-gem "jsonapi-serializer", "~> 2.2"
