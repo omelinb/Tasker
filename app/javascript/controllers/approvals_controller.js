@@ -11,7 +11,7 @@ export default class extends Controller {
     const response = await post(`/tasks/${this.taskIdValue}/approvals`)
 
     if (response.ok) {
-      this.element.innerText = `+${this.approvalsCountValue + 1}`
+      this.element.querySelector('.approval-counter').innerText = this.approvalsCountValue + 1
     } else {
       this.dispatch("forbidden", {
         detail: {
