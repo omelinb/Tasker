@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_task, only: %i[show change_status]
-  before_action :is_creator?, only: :change_status
+  before_action :check_creator, only: :change_status
   before_action :validate_params, only: :change_status
 
   def index
@@ -40,18 +40,14 @@ class TasksController < ApplicationController
   end
 
   def validate_params
-    return if StatusChangeCheckService.call(@task, params[:event])
-
-    head :unprocessable_entity
+    head :unprocessable_entity unless StatusChangeCheckService.call(@task, params[:event])
   end
 
   def set_task
     @task = Task.find(params[:id])
   end
 
-  def is_creator?
-    return if current_user == @task&.creator
-
-    head :forbidden
+  def check_creator
+    head :forbidden unless current_user == @task&.creator
   end
 end

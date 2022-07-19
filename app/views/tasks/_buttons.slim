@@ -7,13 +7,15 @@
       - if task.creator == current_user
         = button_tag 'Complete', class: 'btn btn-sm btn-success py-0 me-1', data: { 'action': 'click->tasks#completeTask' }
         = button_tag 'Cancel', class: 'btn btn-sm btn-danger py-0 me-1', data: { 'action': 'click->tasks#cancelTask' }
-      .ms-auto
-        span [
-              style="cursor: pointer;"
-              title="Approvals"
-              class="badge text-warning rounded-pill bg-dark"
-              data-controller="approvals"
-              data-action="click->approvals#addApproval approvals:forbidden->toast#show"
-              data-approvals-task-id-value== task.id
-              data-approvals-approvals-count-value== task.approvals_count
-             ] = "+#{task.approvals_count}"
+      div [
+            style="cursor: pointer;"
+            title="Approvals"
+            class="ms-auto badge text-warning rounded-pill bg-dark"
+            data-controller="approvals"
+            data-action="approvals:forbidden->toast#show"
+            data-approvals-task-id-value== task.id
+            data-approvals-approvals-count-value== task.approvals_count
+          ]
+        - unless task.creator == current_user
+          span data-action="click->approvals#addApproval" +
+        span class="approval-counter" = task.approvals_count
