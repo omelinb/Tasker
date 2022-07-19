@@ -27,4 +27,4 @@ bundle exec rails db:migrate
 API
 ---
 
-`/api/v1/tasks/:status` - `:status` param can be one of the next values: `new, in_progress, completed, canceled`
+- `/api/v1/tasks/:status` - `:status` param can be one of the next values: `new, in_progress, completed, canceled`
