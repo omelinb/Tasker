@@ -1,10 +1,10 @@
 .d-flex.align-items-center
   - if user_signed_in?
     - if task.new?
-      - if current_user.id == task.creator_id
+      - if task.creator == current_user
         = button_tag 'Start', class: 'btn btn-sm btn-success py-0', data: { 'action': 'click->tasks#startTask' }
     - elsif task.in_progress?
-      - if current_user.id == task.creator_id
+      - if task.creator == current_user
         = button_tag 'Complete', class: 'btn btn-sm btn-success py-0 me-1', data: { 'action': 'click->tasks#completeTask' }
         = button_tag 'Cancel', class: 'btn btn-sm btn-danger py-0 me-1', data: { 'action': 'click->tasks#cancelTask' }
       .ms-auto
@@ -12,6 +12,8 @@
               style="cursor: pointer;"
               title="Approvals"
               class="badge text-warning rounded-pill bg-dark"
-              data-action="click->approvals#addApproval"
-              data-approvals-target="approval"
+              data-controller="approvals"
+              data-action="click->approvals#addApproval approvals:forbidden->toast#show"
+              data-approvals-task-id-value== task.id
+              data-approvals-approvals-count-value== task.approvals_count
              ] = "+#{task.approvals_count}"

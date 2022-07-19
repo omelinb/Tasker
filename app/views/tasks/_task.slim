@@ -1,4 +1,9 @@
-= tag.div(id: "task_#{task.id}", data: { controller: 'tasks approvals' , 'tasks-target': 'task', 'approvals-target': 'task' }, class: "card my-1 #{'purple-border' if task.creator_id == current_user&.id}")
+div [
+     id== "task_#{task.id}"
+     data-controller="tasks"
+     data-action="tasks:forbidden->toast#show"
+     class== "card my-1 #{'purple-border' if task.creator == current_user}"
+    ]
   .card-body
     h6 class="card-title ms-1"
       = link_to task.title, task_path(task), class: 'text-decoration-none link-dark'

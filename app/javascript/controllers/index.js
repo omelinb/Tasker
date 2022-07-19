@@ -9,3 +9,6 @@ application.register("tasks", TasksController)
 
 import ApprovalsController from "./approvals_controller"
 application.register("approvals", ApprovalsController)
+
+import ToastController from "./toast_controller"
+application.register("toast", ToastController)

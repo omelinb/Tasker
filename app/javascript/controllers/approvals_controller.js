@@ -2,15 +2,23 @@ import { Controller } from "@hotwired/stimulus"
 import { post } from "@rails/request.js"
 
 export default class extends Controller {
-  static targets = [ "approval", "task" ]
+  static values = {
+    taskId: Number,
+    approvalsCount: Number
+  }
 
   async addApproval() {
-    const taskId = this.taskTarget.id.split("_")[1]
-    const response = await post(`/tasks/${taskId}/approvals`)
+    const response = await post(`/tasks/${this.taskIdValue}/approvals`)
 
     if (response.ok) {
-      const approvalsCount = parseInt(this.approvalTarget.innerText) + 1
-      this.approvalTarget.innerText = `+${approvalsCount}`
+      this.element.innerText = `+${this.approvalsCountValue + 1}`
+    } else {
+      this.dispatch("forbidden", {
+        detail: {
+          type: "warning",
+          content: "Sorry, you can't approve this task"
+        }
+      })
     }
   }
 }

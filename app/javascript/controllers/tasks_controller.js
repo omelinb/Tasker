@@ -2,8 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 import { patch } from "@rails/request.js"
 
 export default class extends Controller {
-  static targets = [ "task" ]
-
   async startTask() {
     await this.changeStatus("start", "in_progress")
   }
@@ -17,18 +15,24 @@ export default class extends Controller {
   }
 
   async changeStatus(eventName, expectedStatus) {
-    const taskId = this.taskTarget.id.split("_")[1]
+    const taskId = this.element.id.split("_")[1]
     const response = await patch(`/tasks/${taskId}/change_status/${eventName}`)
 
     if (response.ok) {
       const html = await response.html
       this.moveTask(html, expectedStatus)
+    } else {
+      this.dispatch("forbidden", {
+        detail: {
+          type: "warning",
+          content: "Sorry, you can't do this action"
+        }
+      })
     }
   }
 
   moveTask(html, expectedStatus) {
-    this.taskTarget.remove()
-
+    this.element.remove()
     const tasksColumnId = `tasks_${expectedStatus}`
     const taskElement = document.createRange().createContextualFragment(html)
     document.getElementById(tasksColumnId).after(taskElement)
